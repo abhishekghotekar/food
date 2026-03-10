@@ -21,13 +21,14 @@ const Sidebar = ({ activeTab, setActiveTab, isMobile, onClose }) => {
   };
 
   return (
-    <div className="sidebar-inner" style={{ 
-      padding: '2rem 1.75rem', 
+    <div className="sidebar-inner hide-scrollbar" style={{ 
+      padding: '1.5rem 1.5rem', 
       display: 'flex', 
       flexDirection: 'column', 
       height: '100%',
       position: 'relative',
-      backgroundColor: 'white'
+      backgroundColor: 'white',
+      overflowY: 'auto'
     }}>
       {/* Increased touch area and better positioning for mobile close button */}
       {isMobile && (
@@ -42,23 +43,24 @@ const Sidebar = ({ activeTab, setActiveTab, isMobile, onClose }) => {
       )}
 
       <div className="logo" style={{ 
-        fontSize: '1.8rem', 
+        fontSize: '1.6rem', 
         fontWeight: 900, 
-        marginBottom: '2.5rem', 
+        marginBottom: '2rem', 
         color: 'var(--text-main)', 
         letterSpacing: '-1.5px',
         display: 'flex',
         alignItems: 'center',
         gap: '0.6rem',
-        marginTop: isMobile ? '1rem' : '0'
+        marginTop: isMobile ? '1rem' : '0',
+        flexShrink: 0
       }}>
-        <div style={{ backgroundColor: 'var(--primary)', width: '38px', height: '38px', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white' }}>
-          <Utensils size={22} />
+        <div style={{ backgroundColor: 'var(--primary)', width: '36px', height: '36px', borderRadius: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white' }}>
+          <Utensils size={20} />
         </div>
         GoMeal
       </div>
       
-      <nav style={{ flex: 1 }}>
+      <nav style={{ flex: 1, marginBottom: '2rem' }}>
         <ul style={{ listStyle: 'none' }}>
           {menuItems.map((item, index) => (
             <li 
@@ -69,9 +71,9 @@ const Sidebar = ({ activeTab, setActiveTab, isMobile, onClose }) => {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'space-between',
-                padding: '0.85rem 1.25rem',
-                marginBottom: '0.5rem',
-                borderRadius: '16px',
+                padding: '0.75rem 1.1rem',
+                marginBottom: '0.4rem',
+                borderRadius: '14px',
                 cursor: 'pointer',
                 backgroundColor: activeTab === item.label ? 'var(--text-main)' : 'transparent',
                 color: activeTab === item.label ? 'white' : 'var(--text-muted)',
@@ -80,9 +82,9 @@ const Sidebar = ({ activeTab, setActiveTab, isMobile, onClose }) => {
                 boxShadow: activeTab === item.label ? '0 8px 15px rgba(0,0,0,0.1)' : 'none'
               }}
             >
-              <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                {React.cloneElement(item.icon, { color: activeTab === item.label ? 'var(--primary)' : 'currentColor', size: 20 })}
-                <span style={{ fontSize: '0.95rem' }}>{item.label}</span>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.9rem' }}>
+                {React.cloneElement(item.icon, { color: activeTab === item.label ? 'var(--primary)' : 'currentColor', size: 19 })}
+                <span style={{ fontSize: '0.9rem' }}>{item.label}</span>
               </div>
               {activeTab === item.label && <ChevronRight size={14} color="var(--primary)" />}
             </li>
@@ -90,26 +92,26 @@ const Sidebar = ({ activeTab, setActiveTab, isMobile, onClose }) => {
         </ul>
       </nav>
 
-      <div className="sidebar-footer" style={{ marginTop: '1.5rem' }}>
+      <div className="sidebar-footer" style={{ marginTop: 'auto', flexShrink: 0 }}>
         <div className="upgrade-card-premium" style={{
           background: 'linear-gradient(135deg, #f8b400 0%, #ffcc33 100%)',
-          padding: '1.25rem',
+          padding: '1.1rem',
           borderRadius: 'var(--radius-lg)',
           position: 'relative',
           overflow: 'hidden',
-          marginBottom: '1.5rem',
+          marginBottom: '1.25rem',
           boxShadow: 'var(--shadow-primary)'
         }}>
           <div style={{ position: 'relative', zIndex: 1 }}>
-            <h4 style={{ fontSize: '0.95rem', marginBottom: '0.3rem', fontWeight: 900, color: '#1a1a1a' }}>Premium Account</h4>
-            <p style={{ fontSize: '0.75rem', color: '#1a1a1a', opacity: 0.8, marginBottom: '1rem', fontWeight: 600 }}>Unlimited free delivery!</p>
+            <h4 style={{ fontSize: '0.9rem', marginBottom: '0.2rem', fontWeight: 900, color: '#1a1a1a' }}>Premium Account</h4>
+            <p style={{ fontSize: '0.7rem', color: '#1a1a1a', opacity: 0.8, marginBottom: '0.75rem', fontWeight: 600 }}>Unlimited free delivery!</p>
             <button style={{
               backgroundColor: '#1a1a1a',
               color: 'white',
               border: 'none',
-              padding: '0.6rem 1rem',
-              borderRadius: '10px',
-              fontSize: '0.8rem',
+              padding: '0.55rem 0.9rem',
+              borderRadius: '9px',
+              fontSize: '0.75rem',
               fontWeight: 800,
               cursor: 'pointer',
               width: '100%',
@@ -124,7 +126,7 @@ const Sidebar = ({ activeTab, setActiveTab, isMobile, onClose }) => {
             display: 'flex', 
             alignItems: 'center', 
             gap: '1rem', 
-            padding: '0.75rem 1rem', 
+            padding: '0.7rem 1rem', 
             borderRadius: '14px', 
             cursor: 'pointer', 
             color: '#ff4d4d',
